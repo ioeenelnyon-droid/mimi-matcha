@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIMI Foods - Creating Little Moments of Joy | Katalog Resmi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mimi: {
+                            cream: '#F2E4D0',
+                            matcha: '#8FAF72',
+                            matchadark: '#638248',
+                            cheese: '#E7C66A',
+                            brown: '#4A3028',
+                            rose: '#D18A76',
+                            softbg: '#FAF6F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(242, 228, 208, 0.7);
+        }
+        .hero-matcha-gradient {
+            background: linear-gradient(135deg, #FAF6F0 0%, #EAF3E2 50%, #FAF0E4 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F2E4D0;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8FAF72;
+            border-radius: 4px;
+        }
+        .cat-bounce {
+            animation: bounce 2.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body class="bg-mimi-softbg text-mimi-brown font-sans custom-scrollbar antialiased">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-mimi-cream shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo & Name -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <img src="Aesthetic Matcha Brand Green Tea Café & Drink Shop Feed Kit.jpg" alt="MIMI Foods Logo" class="h-12 w-12 object-cover rounded-2xl border-2 border-mimi-matcha shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <div class="flex items-center gap-1">
+                            <span class="font-heading font-black text-2xl text-mimi-matcha tracking-wide">MIMI</span>
+                            <span class="font-heading font-black text-2xl text-mimi-rose">FOODS</span>
+                        </div>
+                        <span class="block text-[10px] font-bold text-mimi-brown/70 uppercase tracking-widest">Creating Little Moments of Joy</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links Desktop -->
+                <div class="hidden lg:flex items-center space-x-6 text-sm font-bold">
+                    <a href="#home" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Beranda</a>
+                    <a href="#owner" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Profil Pemilik</a>
+                    <a href="#catalog" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Katalog Matcha</a>
+                    <a href="#brief" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Brand & Logo Brief</a>
+                    <a href="#vending" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Vending Simulation</a>
+                    <a href="#reviews" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Ulasan & Rating</a>
+                    <a href="#location" class="text-mimi-brown hover:text-mimi-matcha transition-colors">Peta Jepara</a>
+                </div>
+
+                <!-- CTA & User Auth Buttons -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openAuthModal()" id="user-status-btn" class="bg-mimi-cream hover:bg-amber-200 text-mimi-brown text-xs font-bold py-2 px-3.5 rounded-full flex items-center gap-1.5 transition-all shadow-sm">
+                        <i class="fa-solid fa-user-circle text-mimi-matcha text-sm"></i>
+                        <span id="user-display-name">Akses User</span>
+                    </button>
+                    
+                    <button onclick="toggleAdminMode()" id="admin-mode-btn" class="bg-mimi-matcha hover:bg-mimi-matchadark text-white text-xs font-extrabold py-2 px-3 rounded-full transition-all flex items-center gap-1 shadow-md">
+                        <i class="fa-solid fa-key text-mimi-cheese"></i> Mode Pemilik
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative overflow-hidden hero-matcha-gradient py-16 lg:py-24 border-b border-mimi-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/90 border border-mimi-matcha/40 rounded-full px-4 py-1.5 shadow-sm">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-mimi-matcha animate-ping"></span>
+                        <span class="text-xs font-bold text-mimi-brown uppercase tracking-wider">Familiar, but Unexpected • MIMI Foods</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-mimi-brown leading-tight">
+                        Sensasi Unik Matcha, Cheese & Milk <span class="text-transparent bg-clip-text bg-gradient-to-r from-mimi-matcha via-mimi-cheese to-mimi-rose">MATCHÉE & MATCHYAKI</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-mimi-brown/80 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Selamat datang di web resmi <b>MIMI Foods</b>! Nikmati koleksi kesegaran varian rasa minuman kaleng matcha premium dan snack renyah khas maskot Kucing Mimi.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="bg-white/90 p-3 rounded-2xl border border-mimi-matcha/30 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mimi-matcha/20 text-mushi-dark flex items-center justify-center font-bold text-lg text-mimi-matchadark">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs text-mimi-brown/60 font-medium">Minuman MATCHÉE</p>
+                                <p class="text-sm font-bold text-mimi-brown">Matcha × Cheese</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/90 p-3 rounded-2xl border border-mimi-cheese/50 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mimi-cheese/30 text-mimi-brown flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-cookie-bite"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs text-mimi-brown/60 font-medium">Snack MATCHYAKI</p>
+                                <p class="text-sm font-bold text-mimi-brown">Crunchy & Savory</p>
+                            </div>
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1 bg-white/90 p-3 rounded-2xl border border-mimi-rose/30 shadow-sm flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-mimi-rose/20 text-mimi-rose flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-xs text-mimi-brown/60 font-medium">Maskot Kucing</p>
+                                <p class="text-sm font-bold text-mimi-brown">Mimi Cat Joy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#catalog" class="bg-mimi-matchadark hover:bg-mimi-brown text-white font-bold py-3.5 px-8 rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-solid fa-cart-shopping"></i> Pesan Minuman & Snack
+                        </a>
+                        <a href="#owner" class="bg-white hover:bg-mimi-cream text-mimi-brown font-bold py-3.5 px-8 rounded-2xl border border-mimi-cream shadow-sm transition-all duration-300 flex items-center gap-2">
+                            <i class="fa-solid fa-address-card text-mimi-matcha"></i> Profil Dwi Nortyowati
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Main Showcase Image Hero -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-mimi-matcha/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-mimi-cheese/40 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
+                        
+                        <div class="relative glass-card p-6 rounded-3xl shadow-2xl border border-white text-center">
+                            <span class="inline-block bg-mimi-matcha/20 text-mimi-matchadark text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Master Visual Identity</span>
+                            <img src="Aesthetic Matcha Brand Green Tea Café & Drink Shop Feed Kit.jpg" alt="MIMI Foods Showcase" class="w-full h-auto object-cover rounded-2xl shadow-md hover:scale-105 transition-transform duration-500 bg-white">
+                            <div class="mt-4 pt-4 border-t border-mimi-cream flex items-center justify-between text-left">
+                                <div>
+                                    <h4 class="font-bold text-mimi-brown text-sm">Identitas Kucing Mimi</h4>
+                                    <p class="text-xs text-mimi-brown/60">Cute, Playful & Friendly Concept</p>
+                                </div>
+                                <span class="bg-mimi-matcha text-white text-xs font-bold px-3 py-1 rounded-full">MATCHÉE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="owner" class="py-20 bg-white border-b border-mimi-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-extrabold text-mimi-matchadark tracking-widest uppercase">Founder & Owner Profile</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-mimi-brown mt-1">Profil Pemilik MIMI Foods</h2>
+                <p class="text-mimi-brown/70 text-sm mt-2">Mengenal sosok pemilik dan penggagas konsep rasa serba Matcha Mimi Foods.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-mimi-softbg rounded-3xl border border-mimi-cream shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center p-6 md:p-8">
+                    <!-- Owner Photo -->
+                    <div class="md:col-span-5 text-center">
+                        <div class="relative inline-block group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-mimi-matcha to-mimi-cheese rounded-3xl blur opacity-40 group-hover:opacity-70 transition duration-500"></div>
+                            <img src="Kolase Photocard Gingham Biru Kawaii.png" alt="Dwi Nortyowati Photo" class="relative rounded-2xl w-full max-w-xs mx-auto object-cover shadow-lg border-4 border-white transform group-hover:scale-[1.02] transition-transform duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Owner Details -->
+                    <div class="md:col-span-7 space-y-4 text-left">
+                        <div class="inline-flex items-center gap-2 bg-mimi-cream text-mimi-brown text-xs font-extrabold px-3 py-1.5 rounded-full">
+                            <i class="fa-solid fa-crown text-mimi-cheese"></i> Founder & Chief Executive
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-heading font-black text-mimi-brown">Dwi Nortyowati</h3>
+                        
+                        <div class="space-y-2.5 text-xs sm:text-sm text-mimi-brown/80">
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-rose-500 w-5"></i> <b>Domisili:</b> Jawa Tengah, Indonesia (Pusat Jepara)</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-cake-candles text-mimi-cheese w-5"></i> <b>Tahun Kelahiran:</b> 2009</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-emerald-600 w-5 text-base"></i> <b>Nomor Kontak WhatsApp:</b> <span class="font-mono font-bold text-mimi-brown text-sm">085712158287</span></p>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-mimi-brown/80 leading-relaxed bg-white p-4 rounded-2xl border border-mimi-cream">
+                            "MIMI Foods hadir dengan visi menghadirkan <i>Little Moments of Joy</i>. Kami memadukan karakter matcha earthy dengan rasa gurih cheese & milk yang unik, segar, dan menyenangkan bagi anak muda Indonesia."
+                        </p>
+
+                        <!-- Direct WhatsApp Roomchat Button -->
+                        <div class="pt-2">
+                            <a href="https://wa.me/6285712158287?text=Halo%20Kak%20Dwi%20Nortyowati,%20saya%20ingin%20bertanya%20dan%20memesan%20produk%20MIMI%20Foods" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg transition-all hover:scale-105 text-sm">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Hubungi Pemilik (Direct WhatsApp Chat)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-20 bg-mimi-softbg border-b border-mimi-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-xs font-extrabold text-mimi-matchadark tracking-widest uppercase">Katalog Resmi Produk & Pemesanan</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-black text-mimi-brown mt-1">Pilihan Minuman Matcha Mimi & Snack</h2>
+                </div>
+
+                <!-- Category Filters & Admin Action -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2 items-center">
+                    <button onclick="filterCatalog('all')" id="btn-all" class="px-5 py-2.5 rounded-full text-sm font-bold bg-mimi-brown text-white transition-all">Semua Produk</button>
+                    <button onclick="filterCatalog('matchee')" id="btn-matchee" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white text-mimi-brown border border-mimi-cream hover:bg-mimi-matcha hover:text-white transition-all">Minuman MATCHÉE</button>
+                    <button onclick="filterCatalog('matchyaki')" id="btn-matchyaki" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white text-mimi-brown border border-mimi-cream hover:bg-mimi-cheese transition-all">Snack MATCHYAKI</button>
+                    
+                    <!-- Admin Only Upload Button -->
+                    <button id="admin-upload-btn" onclick="openUploadModal()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-4 py-2.5 rounded-full text-xs transition-all flex items-center gap-1 shadow-md">
+                        <i class="fa-solid fa-plus-circle"></i> Upload Gambar / Produk Baru (Dwi Nortyowati)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Product Container Grid -->
+            <div id="product-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- PRODUCT 1: MATCHÉE CAN DRINK -->
+                <div class="catalog-item matchee-item bg-white rounded-3xl border border-mimi-cream overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative bg-gradient-to-br from-mimi-matcha/40 to-mimi-matchadark/30 p-6 flex items-center justify-center min-h-[300px]">
+                        <span class="absolute top-4 left-4 bg-white/90 text-mimi-brown font-bold text-xs px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-snowflake text-cyan-500"></i> Cold Drink (~4°C)
+                        </span>
+                        <span class="absolute top-4 right-4 bg-mimi-cheese text-mimi-brown font-extrabold text-xs px-3 py-1.5 rounded-full shadow-sm">
+                            Ready-To-Drink
+                        </span>
+                        <img src="WhatsApp Image 2026-10-22 at 05.02.35 (1).jpeg" alt="MATCHÉE Can Drink" class="w-full max-h-[260px] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-heading font-black text-mimi-brown">MATCHÉE Can Drink</h3>
+                                <span class="text-lg font-extrabold text-mimi-matchadark">Rp 18.000</span>
+                            </div>
+                            
+                            <p class="text-mimi-brown/70 text-xs mb-4 leading-relaxed">
+                                Minuman kaleng berbasis matcha fungsional yang dipadukan dengan cheese & milk. Menawarkan karakter earthy matcha yang halus dan creamy.
+                            </p>
+
+                            <div class="mb-4">
+                                <span class="block text-[11px] font-bold text-mimi-brown/60 uppercase tracking-wider mb-2">Pilihan Varian Rasa Matcha Mimi:</span>
+                                <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                    <span class="bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-md">Original Matcha Milk</span>
+                                    <span class="bg-amber-100 text-amber-800 font-semibold px-2.5 py-0.5 rounded-md">Matcha Cheese Foam</span>
+                                    <span class="bg-rose-100 text-rose-800 font-semibold px-2.5 py-0.5 rounded-md">Matcha Strawberry Milk</span>
+                                    <span class="bg-cyan-100 text-cyan-800 font-semibold px-2.5 py-0.5 rounded-md">Matcha Isotonic Refresh</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-mimi-cream flex items-center justify-between">
+                            <button onclick="orderProduct('MATCHÉE Can Drink', 18000)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> Pesan Produk
+                            </button>
+                            <button onclick="openDetailModal('matchee')" class="bg-mimi-cream hover:bg-amber-200 text-mimi-brown text-xs font-bold py-2.5 px-4 rounded-xl transition-all">
+                                Detail Varian
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2: MATCHYAKI SNACK -->
+                <div class="catalog-item matchyaki-item bg-white rounded-3xl border border-mimi-cream overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative bg-gradient-to-br from-mimi-cheese/50 to-amber-200 p-6 flex items-center justify-center min-h-[300px]">
+                        <span class="absolute top-4 left-4 bg-white/90 text-mimi-brown font-bold text-xs px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-cookie text-mimi-brown"></i> Snack Renyah
+                        </span>
+                        <span class="absolute top-4 right-4 bg-mimi-rose text-white font-extrabold text-xs px-3 py-1.5 rounded-full shadow-sm">
+                            Crunchy
+                        </span>
+                        <img src="WhatsApp Image 2026-10-22 at 05.02.34.jpeg" alt="MATCHYAKI Crunchy Snack" class="w-full max-h-[260px] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-heading font-black text-mimi-brown">MATCHYAKI Snack</h3>
+                                <span class="text-lg font-extrabold text-mimi-brown">Rp 15.000</span>
+                            </div>
+                            
+                            <p class="text-mimi-brown/70 text-xs mb-4 leading-relaxed">
+                                Snack renyah terinspirasi dari takoyaki dengan balutan seasoning Cheese & Matcha khas MIMI Foods. Gurih dan pas buat cemilan.
+                            </p>
+
+                            <div class="mb-4">
+                                <span class="block text-[11px] font-bold text-mimi-brown/60 uppercase tracking-wider mb-2">Pilihan Varian Rasa Snack:</span>
+                                <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                    <span class="bg-amber-100 text-amber-800 font-semibold px-2.5 py-0.5 rounded-md">Savory Cheese Original</span>
+                                    <span class="bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-md">Matcha Dust Savory</span>
+                                    <span class="bg-red-100 text-red-800 font-semibold px-2.5 py-0.5 rounded-md">Pedas Gurih Sea Salt</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-mimi-cream flex items-center justify-between">
+                            <button onclick="orderProduct('MATCHYAKI Snack', 15000)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> Pesan Produk
+                            </button>
+                            <button onclick="openDetailModal('matchyaki')" class="bg-mimi-cream hover:bg-amber-200 text-mimi-brown text-xs font-bold py-2.5 px-4 rounded-xl transition-all">
+                                Detail Varian
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3: MIMI COMBO BUNDLE -->
+                <div class="catalog-item matchee-item matchyaki-item bg-white rounded-3xl border border-mimi-cream overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative bg-gradient-to-br from-mimi-rose/30 to-mimi-cream p-6 flex items-center justify-center min-h-[300px]">
+                        <span class="absolute top-4 left-4 bg-white/90 text-mimi-brown font-bold text-xs px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-gift text-mimi-rose"></i> Paket Hemat Joy
+                        </span>
+                        <span class="absolute top-4 right-4 bg-emerald-500 text-white font-extrabold text-xs px-3 py-1.5 rounded-full shadow-sm">
+                            Best Value
+                        </span>
+                        <img src="WhatsApp Image 2026-10-22 at 05.02.35.jpeg" alt="MIMI Joy Combo Pack" class="w-full max-h-[260px] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-xl font-heading font-black text-mimi-brown">MIMI Joy Bundle Pack</h3>
+                                <span class="text-lg font-extrabold text-mimi-matchadark">Rp 30.000</span>
+                            </div>
+                            
+                            <p class="text-mimi-brown/70 text-xs mb-4 leading-relaxed">
+                                Paket lengkap 1 Kaleng Minuman MATCHÉE + 1 Pouch MATCHYAKI Snack. Kombinasi sempurna minuman segar dan makanan ringan renyah!
+                            </p>
+
+                            <div class="mb-4">
+                                <span class="block text-[11px] font-bold text-mimi-brown/60 uppercase tracking-wider mb-2">Isi Paket Combo:</span>
+                                <div class="flex flex-wrap gap-1.5 text-[11px]">
+                                    <span class="bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-md">1x Minuman Matchée</span>
+                                    <span class="bg-amber-100 text-amber-800 font-semibold px-2.5 py-0.5 rounded-md">1x Matchyaki Snack</span>
+                                    <span class="bg-purple-100 text-purple-800 font-semibold px-2.5 py-0.5 rounded-md">Free Sticker Mimi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-mimi-cream flex items-center justify-between">
+                            <button onclick="orderProduct('MIMI Joy Bundle Pack', 30000)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i> Pesan Combo
+                            </button>
+                            <button onclick="openDetailModal('combo')" class="bg-mimi-cream hover:bg-amber-200 text-mimi-brown text-xs font-bold py-2.5 px-4 rounded-xl transition-all">
+                                Detail Varian
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="brief" class="py-20 bg-white border-b border-mimi-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold text-mimi-matchadark tracking-widest uppercase">Penjelasan Design Brief Logo & Brand</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-mimi-brown mt-2">Filosofi & Identitas Visual MIMI Foods</h2>
+                <p class="text-mimi-brown/70 text-sm sm:text-base mt-3">
+                    Mengusung tagline <i>"Creating Little Moments of Joy"</i> dengan konsep kreatif <i>"Familiar, but Unexpected"</i>.
+                </p>
+            </div>
+
+            <!-- Brand Color Palette Showcase -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-12">
+                <div class="bg-[#8FAF72] p-4 rounded-2xl text-white text-center shadow-md">
+                    <span class="block font-bold text-xs uppercase">Matcha Green</span>
+                    <span class="text-[10px] font-mono opacity-90">#8FAF72</span>
+                    <span class="block text-[10px] mt-1">Natural & Fresh Matcha</span>
+                </div>
+                <div class="bg-[#F2E4D0] p-4 rounded-2xl text-mimi-brown text-center shadow-md">
+                    <span class="block font-bold text-xs uppercase">Soft Cream</span>
+                    <span class="text-[10px] font-mono opacity-90">#F2E4D0</span>
+                    <span class="block text-[10px] mt-1">Warm & Approachable</span>
+                </div>
+                <div class="bg-[#E7C66A] p-4 rounded-2xl text-mimi-brown text-center shadow-md">
+                    <span class="block font-bold text-xs uppercase">Cheese Yellow</span>
+                    <span class="text-[10px] font-mono opacity-90">#E7C66A</span>
+                    <span class="block text-[10px] mt-1">Cheerful & Cheese</span>
+                </div>
+                <div class="bg-[#4A3028] p-4 rounded-2xl text-white text-center shadow-md">
+                    <span class="block font-bold text-xs uppercase">Dark Brown</span>
+                    <span class="text-[10px] font-mono opacity-90">#4A3028</span>
+                    <span class="block text-[10px] mt-1">Earthy Contrast</span>
+                </div>
+                <div class="bg-[#D18A76] p-4 rounded-2xl text-white text-center shadow-md col-span-2 sm:col-span-1">
+                    <span class="block font-bold text-xs uppercase">Dusty Rose</span>
+                    <span class="text-[10px] font-mono opacity-90">#D18A76</span>
+                    <span class="block text-[10px] mt-1">Cute & Friendly</span>
+                </div>
+            </div>
+
+            <!-- Brief Details Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-mimi-softbg p-8 rounded-3xl border border-mimi-cream space-y-4">
+                    <h3 class="text-2xl font-bold text-mimi-brown flex items-center gap-2">
+                        <i class="fa-solid fa-paw text-mimi-matcha"></i> Karakter Utama: Kucing Mimi
+                    </h3>
+                    <p class="text-sm text-mimi-brown/80 leading-relaxed">
+                        Kucing dipilih sebagai maskot utama MIMI Foods karena memberikan kesan dekat, lucu, playful, dan mudah dikembangkan menjadi penghubung visual antarproduk (MATCHÉE dan MATCHYAKI).
+                    </p>
+                    <ul class="space-y-2 text-xs text-mimi-brown/80">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-mimi-matcha"></i> <b>Wajah Sederhana:</b> Mudah dikenali dan ramah bagi konsumen muda.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-mimi-matcha"></i> <b>Pipi Kemerahan:</b> Menampilkan kesan cute, warm, dan cheerful.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-mimi-matcha"></i> <b>Lettering Organic:</b> Bikin kesan ramah dan tidak kaku.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-mimi-softbg p-8 rounded-3xl border border-mimi-cream space-y-4">
+                    <h3 class="text-2xl font-bold text-mimi-brown flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-mimi-cheese"></i> Konsep "Familiar, but Unexpected"
+                    </h3>
+                    <p class="text-sm text-mimi-brown/80 leading-relaxed">
+                        MIMI Foods memadukan dua hal yang sudah sangat familiar di kalangan pecinta kuliner: kelezatan matcha earthy dan kegurihan cheese milk, menjadi formulasi baru yang mengejutkan dan bikin ketagihan.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="bg-white p-3 rounded-xl border border-mimi-cream">
+                            <h4 class="font-bold text-xs text-mimi-matchadark">MATCHÉE</h4>
+                            <p class="text-[11px] text-mimi-brown/70">Minuman kaleng Matcha × Cheese × Milk.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-mimi-cream">
+                            <h4 class="font-bold text-xs text-mimi-brown">MATCHYAKI</h4>
+                            <p class="text-[11px] text-mimi-brown/70">Snack renyah takoyaki seasoning Matcha Cheese.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vending" class="py-20 bg-mimi-brown text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-extrabold text-mimi-cheese tracking-widest uppercase">Smart Dispensing Simulation</span>
+                    <h2 class="text-3xl sm:text-5xl font-heading font-black leading-tight">
+                        Smart Vending Hub <span class="text-mimi-matcha">MIMI Matcha</span>
+                    </h2>
+                    <p class="text-mimi-cream/80 text-sm sm:text-base leading-relaxed">
+                        Nikmati kemudahan pengambilan minuman MATCHÉE dingin dan snack MATCHYAKI instan melalui simulasi mesin otomatisasi modern.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-mimi-matcha/30 text-mimi-matcha flex items-center justify-center font-bold text-lg flex-shrink-0">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Cold Zone Matchée (~4°C)</h4>
+                                <p class="text-mimi-cream/60 text-xs">Menjaga minuman matcha tetap sangat seger dan creamy saat disajikan.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-mimi-cheese/30 text-mimi-cheese flex items-center justify-center font-bold text-lg flex-shrink-0">
+                                <i class="fa-solid fa-box-archive"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Snack Dispenser Matchyaki</h4>
+                                <p class="text-mimi-cream/60 text-xs">Menjaga kemasan pouch snack tetap crunchy dan terlindungi sempurna.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Interactive Box -->
+                <div class="lg:col-span-6 bg-mimi-brown/90 p-8 rounded-3xl border border-mimi-cream/20 shadow-2xl">
+                    <h3 class="text-xl font-bold mb-3 text-center text-mimi-cheese">Simulasi Interaktif Vending Hub</h3>
+                    <p class="text-xs text-mimi-cream/60 text-center mb-6">Klik tombol di bawah ini untuk mensimulasikan pengambilan produk:</p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <button onclick="simulateVending('matchee')" class="p-4 rounded-2xl bg-mimi-matcha/20 border border-mimi-matcha/40 hover:bg-mimi-matcha/30 text-left transition-all group">
+                            <i class="fa-solid fa-glass-water text-2xl text-mimi-matcha mb-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="block text-sm font-bold text-white">Beli Matchée Can</span>
+                            <span class="block text-[11px] text-mimi-cheese">Dingin ~4°C</span>
+                        </button>
+
+                        <button onclick="simulateVending('matchyaki')" class="p-4 rounded-2xl bg-mimi-cheese/20 border border-mimi-cheese/40 hover:bg-mimi-cheese/30 text-left transition-all group">
+                            <i class="fa-solid fa-cookie-bite text-2xl text-mimi-cheese mb-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="block text-sm font-bold text-white">Beli Matchyaki Snack</span>
+                            <span class="block text-[11px] text-mimi-cream">Crunchy Savory</span>
+                        </button>
+                    </div>
+
+                    <div id="vending-display" class="bg-black/70 p-6 rounded-2xl border border-mimi-cream/20 text-center min-h-[150px] flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-robot text-3xl text-mimi-cream/50 mb-2"></i>
+                        <p class="text-xs text-mimi-cream/80">Silakan pilih produk minuman/snack di atas untuk mensimulasikan pengeluaran barang.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 bg-mimi-softbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-extrabold text-mimi-matchadark tracking-widest uppercase">Rating Pemesanan & Ulasan Konsumen</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-black text-mimi-brown mt-1">Ulasan & Rating MIMI Foods</h2>
+                <p class="text-mimi-brown/70 text-sm mt-2">Semua pengunjung dapat mengetikkan ulasan & rating. Khusus Pemilik (Dwi Nortyowati) yang dapat membalas ulasan tersebut!</p>
+            </div>
+
+            <!-- Review Input Form for Users -->
+            <div class="max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-3xl border border-mimi-cream shadow-md mb-12">
+                <h3 class="text-lg font-bold text-mimi-brown mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-mimi-matcha"></i> Tulis Rating & Ulasan Pemesanan Anda
+                </h3>
+                <form onsubmit="submitReview(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-mimi-brown/80 mb-1">Nama Pengulas</label>
+                            <input type="text" id="review-name" required placeholder="Masukkan nama Anda..." class="w-full px-4 py-2.5 text-sm border border-mimi-cream rounded-xl focus:outline-none focus:border-mimi-matcha">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-mimi-brown/80 mb-1">Pilih Rating Bintang</label>
+                            <select id="review-rating" class="w-full px-4 py-2.5 text-sm border border-mimi-cream rounded-xl focus:outline-none focus:border-mimi-matcha">
+                                <option value="5">⭐⭐⭐⭐⭐ (5/5) Sempurna & Lezat</option>
+                                <option value="4">⭐⭐⭐⭐☆ (4/5) Sangat Enak</option>
+                                <option value="3">⭐⭐⭐☆☆ (3/5) Cukup Enak</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-mimi-brown/80 mb-1">Pesan Ulasan</label>
+                        <textarea id="review-text" required rows="3" placeholder="Bagikan kesan rasa Matchée kaleng / kelezatan Matchyaki snack..." class="w-full px-4 py-2.5 text-sm border border-mimi-cream rounded-xl focus:outline-none focus:border-mimi-matcha"></textarea>
+                    </div>
+                    <button type="submit" class="bg-mimi-matchadark hover:bg-mimi-brown text-white font-bold py-3 px-6 rounded-xl text-sm transition-all shadow-md">
+                        Kirim Rating & Ulasan
+                    </button>
+                </form>
+            </div>
+
+            <!-- Reviews List Container -->
+            <div id="reviews-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Sample Initial Review 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-mimi-cream shadow-sm space-y-3" id="review-card-1">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-mimi-brown text-sm">Nabila Putri (Semarang)</h4>
+                            <span class="text-xs text-amber-500">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <span class="text-[10px] text-mimi-brown/50">1 hari lalu</span>
+                    </div>
+                    <p class="text-xs text-mimi-brown/80 leading-relaxed">
+                        "Minuman MATCHÉE-nya creamy dan enak banget! Kombinasi rasa matcha dengan cheese milk-nya kerasa pas dan seger banget disajikan dingin."
+                    </p>
+
+                    <!-- Owner Response Container -->
+                    <div id="reply-container-1" class="bg-mimi-softbg p-3.5 rounded-2xl border border-mimi-cream mt-3 text-xs space-y-1">
+                        <div class="flex items-center gap-1.5 font-bold text-mimi-brown">
+                            <i class="fa-solid fa-reply text-mimi-matchadark"></i> Balasan Pemilik (Dwi Nortyowati):
+                        </div>
+                        <p id="reply-text-1" class="text-mimi-brown/80 italic">"Terima kasih Kak Nabila! Senang sekali rasa Matchée MIMI Foods disukai!"</p>
+                    </div>
+
+                    <button onclick="openReplyInput(1)" class="admin-only hidden text-xs text-mimi-matchadark font-bold hover:underline mt-2">
+                        <i class="fa-solid fa-comment-dots"></i> [Admin Dwi] Edit / Balas Ulasan
+                    </button>
+                </div>
+
+                <!-- Sample Initial Review 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-mimi-cream shadow-sm space-y-3" id="review-card-2">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-mimi-brown text-sm">Rizky Pratama (Jepara)</h4>
+                            <span class="text-xs text-amber-500">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <span class="text-[10px] text-mimi-brown/50">2 hari lalu</span>
+                    </div>
+                    <p class="text-xs text-mimi-brown/80 leading-relaxed">
+                        "Matchyaki snack renyah beneran nagih! Pas banget dipadukan sama minuman matcha dinginnya. Pengiriman Jepara juga mantap."
+                    </p>
+
+                    <!-- Owner Response Container -->
+                    <div id="reply-container-2" class="bg-mimi-softbg p-3.5 rounded-2xl border border-mimi-cream mt-3 text-xs space-y-1">
+                        <div class="flex items-center gap-1.5 font-bold text-mimi-brown">
+                            <i class="fa-solid fa-reply text-mimi-matchadark"></i> Balasan Pemilik (Dwi Nortyowati):
+                        </div>
+                        <p id="reply-text-2" class="text-mimi-brown/80 italic">"Makasih banyak Kak Rizky! Salam hangat dari tim MIMI Foods Jepara!"</p>
+                    </div>
+
+                    <button onclick="openReplyInput(2)" class="admin-only hidden text-xs text-mimi-matchadark font-bold hover:underline mt-2">
+                        <i class="fa-solid fa-comment-dots"></i> [Admin Dwi] Edit / Balas Ulasan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-20 bg-white border-t border-mimi-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-xs font-extrabold text-mimi-matchadark tracking-widest uppercase">Lokasi Produksi & Hub Jepara</span>
+                    <h2 class="text-3xl font-heading font-black text-mimi-brown">Peta Lokasi MIMI Foods (Jepara)</h2>
+                    <p class="text-mimi-brown/80 text-sm leading-relaxed">
+                        Pusat pembuatan produk matcha, manajemen kualitas, dan pengiriman MIMI Foods berada di kawasan indah <b>Jepara, Jawa Tengah, Indonesia</b>.
+                    </p>
+
+                    <div class="bg-mimi-softbg p-4 rounded-2xl border border-mimi-cream space-y-2 text-xs text-mimi-brown">
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-map-pin text-rose-500"></i> <b>Wilayah Utama:</b> Jepara, Jawa Tengah, Indonesia</p>
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-compass text-mimi-matchadark"></i> <b>Koordinat Wilayah:</b> -6.5888, 110.6684 (Jepara Center)</p>
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-emerald-600"></i> <b>Layanan Kirim:</b> Jepara, Jawa Tengah & Pengiriman Antar Kota</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://maps.google.com/?q=Jepara,Central+Java" target="_blank" class="inline-flex items-center gap-2 bg-mimi-brown hover:bg-black text-white text-xs font-bold py-3 px-5 rounded-xl transition-all">
+                            <i class="fa-solid fa-location-arrow"></i> Buka Google Maps Jepara
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embedded iframe Jepara -->
+                <div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-xl border border-mimi-cream min-h-[350px]">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63428.17506948507!2d110.64005884999999!3d-6.5888289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e711ef8ebca8b27%3A0xa14ff358c2f1f0a5!2sJepara%2C%20Jepara%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="380" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-mimi-brown text-mimi-cream/80 py-12 border-t border-mimi-brown/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <img src="Aesthetic Matcha Brand Green Tea Café & Drink Shop Feed Kit.jpg" alt="MIMI Foods Logo Footer" class="h-10 w-10 object-cover rounded-xl border border-mimi-matcha">
+                        <span class="font-heading font-black text-2xl text-white">MIMI FOODS</span>
+                    </div>
+                    <p class="text-xs text-mimi-cream/70 leading-relaxed max-w-sm">
+                        Creating Little Moments of Joy. Brand Makanan & Minuman Matcha Kreatif khas Dwi Nortyowati. Berpusat di Jawa Tengah.
+                    </p>
+                </div>
+
+                <div class="md:col-span-3 space-y-2">
+                    <h4 class="text-white text-sm font-bold">Navigasi Website</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="#home" class="hover:text-mimi-cheese">Beranda Utama</a></li>
+                        <li><a href="#owner" class="hover:text-mimi-cheese">Profil Dwi Nortyowati</a></li>
+                        <li><a href="#catalog" class="hover:text-mimi-cheese">Katalog Matcha Mimi</a></li>
+                        <li><a href="#reviews" class="hover:text-mimi-cheese">Rating & Ulasan Pemesanan</a></li>
+                        <li><a href="#location" class="hover:text-mimi-cheese">Peta Lokasi Jepara</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-2">
+                    <h4 class="text-white text-sm font-bold">Kontak Pemilik Direct WhatsApp</h4>
+                    <p class="text-xs text-white"><b>Dwi Nortyowati</b> (Pemilik MIMI Foods)</p>
+                    <p class="text-xs text-mimi-cream/90"><i class="fa-brands fa-whatsapp text-emerald-400"></i> Roomchat WA: <b>085712158287</b></p>
+                    <p class="text-xs text-mimi-cream/70"><i class="fa-solid fa-location-dot text-rose-400"></i> Jawa Tengah, Indonesia</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-mimi-cream/10 text-center text-xs text-mimi-cream/50">
+                <p>&copy; 2026 MIMI Foods Official. All Rights Reserved. Open Source Web Experience.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Login Modal (Simple Email Input) -->
+    <div id="authModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-mimi-brown/50 hover:text-mimi-brown text-xl font-bold">&times;</button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-mimi-cream text-mimi-matchadark rounded-full flex items-center justify-center mx-auto text-xl mb-2">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <h3 class="text-xl font-bold text-mimi-brown">Akses Akun User</h3>
+                <p class="text-xs text-mimi-brown/60 mt-1">Cukup masukkan email Anda untuk mengaktifkan akun pengunjung. (Opsional / Open Source)</p>
+            </div>
+
+            <form onsubmit="handleUserLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-mimi-brown mb-1">Email Anda</label>
+                    <input type="email" id="login-email" required placeholder="contoh: user@gmail.com" class="w-full px-4 py-2.5 text-sm border border-mimi-cream rounded-xl focus:outline-none focus:border-mimi-matcha">
+                </div>
+                <button type="submit" class="w-full bg-mimi-brown hover:bg-black text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md">
+                    Simpan & Masuk Sesi
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Product Upload Modal (Owner Dwi Nortyowati Only) -->
+    <div id="uploadModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeUploadModal()" class="absolute top-4 right-4 text-mimi-brown/50 hover:text-mimi-brown text-xl font-bold">&times;</button>
+            
+            <div class="text-center mb-6">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Akses Khusus Pemilik (Dwi Nortyowati)</span>
+                <h3 class="text-xl font-bold text-mimi-brown mt-2">Upload Gambar / Tambah Produk Katalog Baru</h3>
+            </div>
+
+            <form onsubmit="handleProductUpload(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-mimi-brown mb-1">Nama Produk Produk Matcha / Snack</label>
+                    <input type="text" id="new-prod-name" required placeholder="misal: MATCHÉE Ice Cream Milk" class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-mimi-brown mb-1">Kategori Produk</label>
+                        <select id="new-prod-cat" class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl">
+                            <option value="matchee">Minuman MATCHÉE</option>
+                            <option value="matchyaki">Snack MATCHYAKI</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-mimi-brown mb-1">Harga (Rp)</label>
+                        <input type="number" id="new-prod-price" required placeholder="18000" class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-mimi-brown mb-1">URL / Link Gambar Produk Baru</label>
+                    <input type="text" id="new-prod-img" placeholder="Masukkan link gambar / foto produk..." class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl mb-2">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-mimi-brown mb-1">Deskripsi Singkat Varian Rasa</label>
+                    <textarea id="new-prod-desc" required rows="3" placeholder="Sajikan penjelasan kelezatan rasa produk..." class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md">
+                    Upload & Tayangkan ke Katalog
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeDetailModal()" class="absolute top-5 right-5 text-mimi-brown/50 hover:text-mimi-brown text-2xl font-bold">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Reply Modal for Owner Dwi Nortyowati -->
+    <div id="replyModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeReplyModal()" class="absolute top-4 right-4 text-mimi-brown/50 hover:text-mimi-brown text-xl font-bold">&times;</button>
+            
+            <h3 class="text-lg font-bold text-mimi-brown mb-2"><i class="fa-solid fa-reply text-mimi-matchadark"></i> Balas Ulasan Konsumen (Pemilik)</h3>
+            <p class="text-xs text-mimi-brown/60 mb-4">Balasan akan tampil sebagai jawaban resmi dari Dwi Nortyowati.</p>
+
+            <form onsubmit="handleReplySubmit(event)" class="space-y-4">
+                <input type="hidden" id="reply-review-id">
+                <textarea id="reply-input-text" required rows="4" placeholder="Tuliskan balasan ramah Anda..." class="w-full px-3 py-2 text-sm border border-mimi-cream rounded-xl focus:outline-none focus:border-mimi-matcha"></textarea>
+                <button type="submit" class="w-full bg-mimi-matchadark hover:bg-mimi-brown text-white font-bold py-2.5 rounded-xl text-sm transition-all shadow-md">
+                    Simpan Balasan Resmi Pemilik
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let isAdmin = false;
+        let loggedUserEmail = localStorage.getItem('mimi_user_email') || null;
+
+        // Initialize UI State
+        window.onload = function() {
+            if (loggedUserEmail) {
+                document.getElementById('user-display-name').innerText = loggedUserEmail.split('@')[0];
+            }
+        };
+
+        // User Auth Login Logic
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+        function handleUserLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            loggedUserEmail = email;
+            localStorage.setItem('mimi_user_email', email);
+            document.getElementById('user-display-name').innerText = email.split('@')[0];
+            closeAuthModal();
+            alert('Selamat datang, ' + email + '! Anda berhasil mengaktifkan sesi user.');
+        }
+
+        // Admin Mode Toggle (Dwi Nortyowati Access Control)
+        function toggleAdminMode() {
+            if (!isAdmin) {
+                const pin = prompt("Masukkan PIN Pemilik (Dwi Nortyowati) untuk membuka akses khusus admin:");
+                if (pin === "2009" || pin === "dwi" || pin === "admin") {
+                    isAdmin = true;
+                    document.getElementById('admin-mode-btn').className = "bg-emerald-600 text-white font-extrabold py-2 px-3.5 rounded-full text-xs shadow-md";
+                    document.getElementById('admin-mode-btn').innerHTML = '<i class="fa-solid fa-user-check"></i> Akses Pemilik (Dwi Nortyowati) AKTIFF';
+                    document.getElementById('admin-upload-btn').classList.remove('hidden');
+                    
+                    // Show owner reply buttons
+                    document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+                    alert('Akses Khusus Pemilik (Dwi Nortyowati) Aktif! Anda dapat mengupload gambar produk baru dan membalas ulasan.');
+                } else if (pin !== null) {
+                    alert('PIN salah! Halaman ini dikunci khusus untuk pemilik website (Dwi Nortyowati).');
+                }
+            } else {
+                isAdmin = false;
+                document.getElementById('admin-mode-btn').className = "bg-mimi-matcha hover:bg-mimi-matchadark text-white text-xs font-extrabold py-2 px-3 rounded-full transition-all flex items-center gap-1 shadow-md";
+                document.getElementById('admin-mode-btn').innerHTML = '<i class="fa-solid fa-key text-mimi-cheese"></i> Mode Pemilik';
+                document.getElementById('admin-upload-btn').classList.add('hidden');
+                document.querySelectorAll('.admin-only').forEach(el => el.classList.add('hidden'));
+                alert('Anda telah keluar dari Mode Pemilik.');
+            }
+        }
+
+        // Upload Product & Image Logic (Admin Only)
+        function openUploadModal() {
+            document.getElementById('uploadModal').classList.remove('hidden');
+        }
+        function closeUploadModal() {
+            document.getElementById('uploadModal').classList.add('hidden');
+        }
+        function handleProductUpload(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-prod-name').value;
+            const cat = document.getElementById('new-prod-cat').value;
+            const price = document.getElementById('new-prod-price').value;
+            const img = document.getElementById('new-prod-img').value || 'Aesthetic Matcha Brand Green Tea Café & Drink Shop Feed Kit.jpg';
+            const desc = document.getElementById('new-prod-desc').value;
+
+            const container = document.getElementById('product-container');
+            const card = document.createElement('div');
+            card.className = `catalog-item ${cat}-item bg-white rounded-3xl border border-mimi-cream overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col`;
+            
+            const badgeBg = cat === 'matchee' ? 'from-mimi-matcha/40 to-mimi-matchadark/30' : 'from-mimi-cheese/50 to-amber-200';
+
+            card.innerHTML = `
+                <div class="relative bg-gradient-to-br ${badgeBg} p-6 flex items-center justify-center min-h-[300px]">
+                    <span class="absolute top-4 left-4 bg-white/90 text-mimi-brown font-bold text-xs px-3 py-1.5 rounded-full shadow-sm">
+                        Baru Diunggah Pemilik
+                    </span>
+                    <img src="${img}" alt="${name}" class="w-full max-h-[260px] object-contain drop-shadow-xl">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-heading font-black text-mimi-brown">${name}</h3>
+                            <span class="text-lg font-extrabold text-mimi-matchadark">Rp ${parseInt(price).toLocaleString('id-ID')}</span>
+                        </div>
+                        <p class="text-mimi-brown/70 text-xs mb-4 leading-relaxed">${desc}</p>
+                    </div>
+                    <div class="pt-4 border-t border-mimi-cream flex items-center justify-between">
+                        <button onclick="orderProduct('${name}', ${price})" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-cart-plus"></i> Pesan Produk
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            container.prepend(card);
+            closeUploadModal();
+            alert('Produk & gambar baru berhasil diunggah ke katalog website MIMI Foods!');
+        }
+
+        // Direct WhatsApp Order Function (Direct to Owner Chat: 085712158287)
+        function orderProduct(productName, price) {
+            const qty = prompt(`Masukkan jumlah pemesanan untuk ${productName}:`, "1");
+            if (qty && !isNaN(qty) && qty > 0) {
+                const total = price * parseInt(qty);
+                const msg = `Halo Kak Dwi Nortyowati (MIMI Foods), saya ingin memesan:\n- Produk: ${productName}\n- Jumlah: ${qty} pcs\n- Total Estimasi: Rp ${total.toLocaleString('id-ID')}\nMohon diproses untuk pengiriman dari Jepara!`;
+                window.open(`https://wa.me/6285712158287?text=${encodeURIComponent(msg)}`, '_blank');
+            }
+        }
+
+        // Interactive Catalog Filter
+        function filterCatalog(category) {
+            const items = document.querySelectorAll('.catalog-item');
+            document.getElementById('btn-all').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-white text-mimi-brown border border-mimi-cream transition-all";
+            document.getElementById('btn-matchee').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-white text-mimi-brown border border-mimi-cream transition-all";
+            document.getElementById('btn-matchyaki').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-white text-mimi-brown border border-mimi-cream transition-all";
+
+            if (category === 'all') {
+                document.getElementById('btn-all').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-mimi-brown text-white transition-all";
+                items.forEach(item => item.style.display = 'flex');
+            } else if (category === 'matchee') {
+                document.getElementById('btn-matchee').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-mimi-matchadark text-white transition-all";
+                items.forEach(item => item.classList.contains('matchee-item') ? item.style.display = 'flex' : item.style.display = 'none');
+            } else if (category === 'matchyaki') {
+                document.getElementById('btn-matchyaki').className = "px-5 py-2.5 rounded-full text-sm font-bold bg-mimi-cheese text-mimi-brown transition-all";
+                items.forEach(item => item.classList.contains('matchyaki-item') ? item.style.display = 'flex' : item.style.display = 'none');
+            }
+        }
+
+        // Reviews Logic
+        let reviewCounter = 2;
+        function submitReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value;
+            const ratingVal = document.getElementById('review-rating').value;
+            const text = document.getElementById('review-text').value;
+            
+            reviewCounter++;
+            const stars = '⭐'.repeat(parseInt(ratingVal));
+            const list = document.getElementById('reviews-list');
+
+            const card = document.createElement('div');
+            card.className = "bg-white p-6 rounded-3xl border border-mimi-cream shadow-sm space-y-3";
+            card.id = `review-card-${reviewCounter}`;
+            card.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-mimi-brown text-sm">${name}</h4>
+                        <span class="text-xs text-amber-500">${stars}</span>
+                    </div>
+                    <span class="text-[10px] text-mimi-brown/50">Baru saja</span>
+                </div>
+                <p class="text-xs text-mimi-brown/80 leading-relaxed">"${text}"</p>
+                <div id="reply-container-${reviewCounter}" class="hidden bg-mimi-softbg p-3.5 rounded-2xl border border-mimi-cream mt-3 text-xs space-y-1">
+                    <div class="flex items-center gap-1.5 font-bold text-mimi-brown">
+                        <i class="fa-solid fa-reply text-mimi-matchadark"></i> Balasan Pemilik (Dwi Nortyowati):
+                    </div>
+                    <p id="reply-text-${reviewCounter}" class="text-mimi-brown/80 italic"></p>
+                </div>
+                <button onclick="openReplyInput(${reviewCounter})" class="admin-only ${isAdmin ? '' : 'hidden'} text-xs text-mimi-matchadark font-bold hover:underline mt-2">
+                    <i class="fa-solid fa-comment-dots"></i> [Admin Dwi] Edit / Balas Ulasan
+                </button>
+            `;
+
+            list.prepend(card);
+            document.getElementById('review-name').value = '';
+            document.getElementById('review-text').value = '';
+            alert('Ulasan & rating Anda telah berhasil terpublikasi di website MIMI Foods!');
+        }
+
+        // Owner Reply Logic (Dwi Nortyowati)
+        function openReplyInput(id) {
+            if (!isAdmin) {
+                alert('Hanya pemilik (Dwi Nortyowati) yang dapat membalas ulasan.');
+                return;
+            }
+            document.getElementById('reply-review-id').value = id;
+            document.getElementById('replyModal').classList.remove('hidden');
+        }
+        function closeReplyModal() {
+            document.getElementById('replyModal').classList.add('hidden');
+        }
+        function handleReplySubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('reply-review-id').value;
+            const replyMsg = document.getElementById('reply-input-text').value;
+
+            const container = document.getElementById(`reply-container-${id}`);
+            const textElem = document.getElementById(`reply-text-${id}`);
+            
+            textElem.innerText = `"${replyMsg}"`;
+            container.classList.remove('hidden');
+            
+            closeReplyModal();
+            document.getElementById('reply-input-text').value = '';
+            alert('Balasan resmi Anda sebagai pemilik (Dwi Nortyowati) telah disimpan!');
+        }
+
+        // Vending Simulator
+        function simulateVending(type) {
+            const display = document.getElementById('vending-display');
+            display.innerHTML = `
+                <div class="inline-block animate-spin text-mimi-cheese text-2xl mb-2">
+                    <i class="fa-solid fa-circle-notch"></i>
+                </div>
+                <p class="text-xs text-mimi-cream font-bold">Memproses transaksi Vending Machine...</p>
+            `;
+
+            setTimeout(() => {
+                if (type === 'matchee') {
+                    display.innerHTML = `
+                        <div class="bg-mimi-matcha/20 p-4 rounded-2xl border border-mimi-matcha/40 text-center w-full">
+                            <i class="fa-solid fa-glass-water text-3xl text-mimi-matcha mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">MATCHÉE Can Drink Ready!</h4>
+                            <p class="text-xs text-mimi-cream/90 mt-1">Disajikan dingin ~4°C. Nikmati sensasi Matcha Cheese!</p>
+                            <span class="inline-block bg-emerald-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded mt-2">SUKSES - Rp18.000</span>
+                        </div>
+                    `;
+                } else {
+                    display.innerHTML = `
+                        <div class="bg-mimi-cheese/20 p-4 rounded-2xl border border-mimi-cheese/40 text-center w-full">
+                            <i class="fa-solid fa-cookie-bite text-3xl text-mimi-cheese mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">MATCHYAKI Snack Ready!</h4>
+                            <p class="text-xs text-mimi-cream/90 mt-1">Snack renyah takoyaki seasoning Matcha Cheese!</p>
+                            <span class="inline-block bg-emerald-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded mt-2">SUKSES - Rp15.000</span>
+                        </div>
+                    `;
+                }
+            }, 1200);
+        }
+
+        // Product Modal Details
+        function openDetailModal(type) {
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('modalContent');
+
+            if (type === 'matchee') {
+                content.innerHTML = `
+                    <div class="text-center mb-6">
+                        <span class="bg-mimi-matcha/20 text-mimi-matchadark text-xs font-bold px-3 py-1 rounded-full uppercase">Detail Produk Minuman</span>
+                        <h3 class="text-2xl font-black text-mimi-brown mt-2">MATCHÉE Ready-To-Drink Can</h3>
+                    </div>
+                    <div class="space-y-4 text-sm text-mimi-brown/80">
+                        <p><b>Deskripsi:</b> Minuman kaleng berbasis matcha fungsional yang dipadukan dengan cheese & milk. Menawarkan karakter earthy matcha yang halus, tidak terlalu pahit, serta dipadukan dengan sensasi gurih creamy.</p>
+                        <div class="bg-mimi-softbg p-4 rounded-2xl border border-mimi-cream">
+                            <h4 class="font-bold text-mimi-brown text-xs uppercase tracking-wider mb-2">4 Varian Rasa Utama:</h4>
+                            <ul class="grid grid-cols-2 gap-2 text-xs">
+                                <li>• Original Matcha Milk</li>
+                                <li>• Matcha Cheese Foam</li>
+                                <li>• Matcha Strawberry Milk</li>
+                                <li>• Matcha Isotonic Refresh</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'matchyaki') {
+                content.innerHTML = `
+                    <div class="text-center mb-6">
+                        <span class="bg-mimi-cheese/40 text-mimi-brown text-xs font-bold px-3 py-1 rounded-full uppercase">Detail Produk Snack</span>
+                        <h3 class="text-2xl font-black text-mimi-brown mt-2">MATCHYAKI Crunchy Snack</h3>
+                    </div>
+                    <div class="space-y-4 text-sm text-mimi-brown/80">
+                        <p><b>Deskripsi:</b> Snack renyah terinspirasi dari takoyaki dengan balutan seasoning Cheese & Matcha khas MIMI Foods. Gurih, renyah, dan sangat pas dipadukan dengan minuman matcha dingin.</p>
+                        <div class="bg-mimi-softbg p-4 rounded-2xl border border-mimi-cream">
+                            <h4 class="font-bold text-mimi-brown text-xs uppercase tracking-wider mb-2">3 Varian Rasa Snack:</h4>
+                            <ul class="grid grid-cols-2 gap-2 text-xs">
+                                <li>• Savory Cheese Original</li>
+                                <li>• Matcha Dust Savory</li>
+                                <li>• Pedas Gurih Sea Salt</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <div class="text-center mb-6">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Detail Paket Bundle</span>
+                        <h3 class="text-2xl font-black text-mimi-brown mt-2">MIMI Joy Bundle Pack</h3>
+                    </div>
+                    <div class="space-y-4 text-sm text-mimi-brown/80">
+                        <p><b>Deskripsi:</b> Nikmati kombinasi lengkap 1 Kaleng Minuman MATCHÉE + 1 Pouch Snack MATCHYAKI + Bonus Sticker Eksklusif Kucing Mimi.</p>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
